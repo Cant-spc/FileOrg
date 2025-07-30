@@ -46,7 +46,6 @@ FILE_CATEGORIES = {
 
     ".exe": "Executables",
     ".torrent": "Torrents",
-    ".t":"tor",
 
     ".app": "Applications",
     ".apk": "Applications",
@@ -80,6 +79,10 @@ def organize(directory: str = typer.Argument(".", help="Directory to organize"))
                 typer.echo(f"Moved '{filename}' to '{target_folder}'")
             except OSError as e:
                 typer.echo(f"Error moving '{filename}': {e}")
+
+
+
+
 @app.command()
 def stats(directory: str = typer.Argument(".", help="Directory to analyze")):
     """Show statistics about files in the directory."""
@@ -109,6 +112,10 @@ def stats(directory: str = typer.Argument(".", help="Directory to analyze")):
     for category, count in sorted(file_counts.items()):
         typer.echo(f"  {category}: {count} files")
 
+
+
+
+
 @app.command()
 def clean(directory: str = typer.Argument(".", help="Directory to clean empty folders from")):
     if not os.path.isdir(directory):
@@ -126,6 +133,9 @@ def clean(directory: str = typer.Argument(".", help="Directory to clean empty fo
                 typer.echo(f"Error deleting '{folder_path}': {e}")
 
 
+
+
+
 @app.command()
 def list_categories():
     """List all file categories and their extensions."""
@@ -139,11 +149,20 @@ def list_categories():
     for category, extensions in sorted(categories.items()):
         typer.echo(f"  {category}: {', '.join(extensions)}")
 
+
+
+
+
+
 @app.command()
 def add_category(ext: str, category: str):
     """Add a new file category."""
     FILE_CATEGORIES[ext.lower()] = category
     typer.echo(f"Added category '{category}' for extension '{ext}'")
+
+
+
+
 
 @app.command()
 def remove_category(ext: str):
@@ -153,6 +172,10 @@ def remove_category(ext: str):
         typer.echo(f"Removed category for extension '{ext}'")
     else:
         typer.echo(f"Error: No category found for extension '{ext}'")
+
+
+
+
 
 @app.command()
 def undoorganize(directory: str = typer.Argument(".", help="Directory to undo organize from")):
@@ -177,6 +200,8 @@ def undoorganize(directory: str = typer.Argument(".", help="Directory to undo or
                 typer.echo(f"Moved '{filename}' to '{target_folder}'")
             except OSError as e:
                 typer.echo(f"Error moving '{filename}': {e}")
+
+
 
 
 

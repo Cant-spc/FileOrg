@@ -16,6 +16,7 @@ It will help to organize and manage files in a more organized way so that users 
 ```
 pip install filefix
 ```
+
 ## Usage :
 ```
 filefix organize "<directory>"
