@@ -46,6 +46,7 @@ FILE_CATEGORIES = {
 
     ".exe": "Executables",
     ".torrent": "Torrents",
+    ".t":"TOR",
 
     ".app": "Applications",
     ".apk": "Applications",
@@ -92,6 +93,7 @@ def stats(directory: str = typer.Argument(".", help="Directory to analyze")):
         raise typer.Exit(code=1)
     
     file_counts = {}
+    folder_counts = {}
     total_size = 0
     total_files = 0
     
@@ -105,13 +107,17 @@ def stats(directory: str = typer.Argument(".", help="Directory to analyze")):
             file_counts[category] = file_counts.get(category, 0) + 1
             total_size += os.path.getsize(file_path)
             total_files += 1
-    
+        elif os.path.isdir(file_path):
+            folder_counts[filename] = folder_counts.get(filename, 0) + 1    
     typer.echo(f"\n📊 Directory Statistics for '{directory}':")
     typer.echo(f"Total files: {total_files}")
     typer.echo(f"Total size: {total_size / (1024*1024):.2f} MB")
     typer.echo("\nFiles by category:")
     for category, count in sorted(file_counts.items()):
         typer.echo(f"  {category}: {count} files")
+    typer.echo("\nFolders:")
+    for folder, count in sorted(folder_counts.items()):
+        typer.echo(f"  {folder}: {count} folders")
 
 
 
