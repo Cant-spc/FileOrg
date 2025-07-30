@@ -118,6 +118,7 @@ def stats(directory: str = typer.Argument(".", help="Directory to analyze")):
 
 @app.command()
 def clean(directory: str = typer.Argument(".", help="Directory to clean empty folders from")):
+    """Directory to clean empty folders from """
     if not os.path.isdir(directory):
         typer.echo(f"Error: '{directory}' is not a valid directory.")
         raise typer.Exit(code=1)
@@ -178,7 +179,8 @@ def remove_category(ext: str):
 
 
 @app.command()
-def undoorganize(directory: str = typer.Argument(".", help="Directory to undo organize from")):
+def undo_organize(directory: str = typer.Argument(".", help="Directory to undo organize from")):
+    """Directory to undo organize from"""
     if not os.path.isdir(directory):
         typer.echo(f"Error: '{directory}' is not a valid directory.")
         raise typer.Exit(code=1)
