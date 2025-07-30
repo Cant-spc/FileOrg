@@ -55,6 +55,7 @@ FILE_CATEGORIES = {
 
 @app.command()
 def organize(directory: str = typer.Argument(".", help="Directory to organize")):
+    """Organize files in a directory based on their file type."""
 
     if not os.path.isdir(directory):
         typer.echo(f"Error: '{directory}' is not a valid directory.")
