@@ -16,6 +16,8 @@ It will help to organize and manage files in a more organized way so that users 
 ```
 pip install filefix
 ```
+## Image :
+![Image](/test/Images/testcase.png)
 
 ## Usage :
 ```
@@ -36,3 +38,4 @@ filefix list-categories "<directory>"
 - Commit your changes.
 - Push your changes.
 - Create a pull request.
+
