@@ -2,6 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="filefix",
+    author="Tanish Gupta",
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
@@ -12,4 +13,8 @@ setup(
             'filefix=filefix.core:app',
         ],
     },
+    description="A CLI tool to organize files in a directory.",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    url="https://github.com/tanishgupta/filefix",
 )
