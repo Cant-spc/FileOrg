@@ -10,27 +10,44 @@ FILE_CATEGORIES = {
     ".png": "Images",
     ".gif": "Images",
     ".jpeg": "Images",
+
     ".avi": "Videos",
     ".mov": "Videos",
+
     ".pdf": "PDFs",
     ".txt": "Text",
     ".docx": "Word",
     ".xlsx": "Excel",
     ".pptx": "PowerPoint",
+    ".ppt": "PowerPoint",
     ".csv": "CSV",
+
     ".mp3": "Music",
+    ".wav": "Music",
+    ".flac": "Music",
+
     ".mp4": "Videos",
+    ".webm": "Videos",
+    ".webp": "Videos",
+    ".mov":"Videos",
+
+    # Languages 
     ".py": "Python",
     ".java": "Java",
     ".c": "C",
     ".cpp": "C++",
     ".js": "WEB",
     ".html": "WEB",
-    ".css": "WEB",
+    ".css": "WEB", 
     ".zip": "Archives",
-    ".exe": "Executables",
+    
     ".rar": "Archives",
     ".tar": "Archives",
+
+    ".exe": "Executables",
+    ".torrent": "Torrents",
+    ".t":"tor",
+
     ".app": "Applications",
     ".apk": "Applications",
 
