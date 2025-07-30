@@ -27,3 +27,12 @@ filefix remove-category <extension>
 filefix undo-organize "<directory>"
 filefix list-categories "<directory>"
 ```
+## Contributing : 
+(Open Source Project) Anyone can contribute to this project. 
+
+- Fork the repository.
+- Create a new branch.
+- Make your changes.
+- Commit your changes.
+- Push your changes.
+- Create a pull request.
