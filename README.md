@@ -11,6 +11,7 @@ It will help to organize and manage files in a more organized way so that users 
 - Remove a file category.
 - Undo organize files in a directory.
 - List all file categories and their extensions.
+- Create a folder structure based on a YAML template.(!note always use a (YAML File Tree with Inline Content))
 
 ## Installation :
 ```
@@ -28,6 +29,8 @@ filefix add-category <extension> <category>
 filefix remove-category <extension>
 filefix undo-organize "<directory>"
 filefix list-categories "<directory>"
+filefix create-structure <template_path> <target_dir> (!note always use a (YAML File Tree with Inline Content))
+
 ```
 ## Contributing : 
 (Open Source Project) Anyone can contribute to this project. 

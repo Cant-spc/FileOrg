@@ -1,0 +1,64 @@
+n_project/:
+  README.md: |
+    # n
+    Created on: {{date}}
+
+    This is a Python library named `n`.
+
+  pyproject.toml: |
+    [build-system]
+    requires = ["setuptools", "wheel"]
+    build-backend = "setuptools.build_meta"
+
+    [project]
+    name = "n"
+    version = "0.1.0"
+    description = "A simple Python library named n"
+    authors = [{name = "Your Name", email = "you@example.com"}]
+    dependencies = []
+
+  requirements.txt: |
+    # Add your dependencies here
+    numpy
+
+  .gitignore: |
+    __pycache__/
+    *.pyc
+    .DS_Store
+    .env
+
+  LICENSE: |
+    MIT License
+
+    Copyright (c) {{year}} Your Name
+
+    Permission is hereby granted...
+
+  src/:
+    n/:
+      __init__.py: |
+        from .core import greet
+
+      core.py: |
+        def greet(name="World"):
+            return f"Hello, {name}!"
+
+  tests/:
+    __init__.py: ""
+    test_core.py: |
+      import unittest
+      from n.core import greet
+
+      class TestCore(unittest.TestCase):
+          def test_greet(self):
+              self.assertEqual(greet("Tanish"), "Hello, Tanish")
+              self.assertEqual(greet(), "Hello, World")
+
+      if __name__ == "__main__":
+          unittest.main()
+
+  examples/:
+    example.py: |
+      from n import greet
+
+      print(greet("Developer"))
