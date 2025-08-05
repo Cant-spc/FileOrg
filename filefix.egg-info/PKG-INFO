@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: filefix
-Version: 0.1.1
+Version: 0.1.2
 Summary: A CLI tool to organize files in a directory.
 Home-page: https://github.com/tanishgupta/filefix
 Author: Tanish Gupta
@@ -26,8 +26,7 @@ It will help to organize and manage files in a more organized way so that users 
 - Remove a file category.
 - Undo organize files in a directory.
 - List all file categories and their extensions.
-- Create a folder structure based on a YAML template.
-- Organize files in a directory based on their date of creation or modification.
+- Create a folder structure based on a YAML template.(!note always use a (YAML File Tree with Inline Content))
 
 ## Installation :
 ```
@@ -45,8 +44,8 @@ filefix add-category <extension> <category>
 filefix remove-category <extension>
 filefix undo-organize "<directory>"
 filefix list-categories "<directory>"
-filefix create-structure <template_path> <target_dir> --force
-filefix organize-by-date <directory> --date-type <date_type> --group-by <group_by>
+filefix create-structure <template_path> <target_dir> (!note always use a (YAML File Tree with Inline Content))
+
 ```
 ## Contributing : 
 (Open Source Project) Anyone can contribute to this project. 
