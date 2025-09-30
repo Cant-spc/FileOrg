@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="filefix",
-    author="Tanish Gupta",
+    author="",
     version="0.1.2",
     packages=find_packages(),
     install_requires=[
