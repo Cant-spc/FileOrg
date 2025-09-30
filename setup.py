@@ -16,5 +16,5 @@ setup(
     description="A CLI tool to organize files in a directory.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/tanishgupta/filefix",
+    url="https://github.com/Cant-spc/FileOrg",
 )
