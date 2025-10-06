@@ -1,4 +1,3 @@
-os
 typer
 pyyaml
-datetime
+watchdog

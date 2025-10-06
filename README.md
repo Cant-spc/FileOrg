@@ -12,6 +12,7 @@ It will help to organize and manage files in a more organized way so that users 
 - Undo organize files in a directory.
 - List all file categories and their extensions.
 - Create a folder structure based on a YAML template.(!note always use a (YAML File Tree with Inline Content))
+- Watch a directory and auto-organize new files in real-time.
 
 ## Installation :
 ```
@@ -30,6 +31,7 @@ filefix remove-category <extension>
 filefix undo-organize "<directory>"
 filefix list-categories "<directory>"
 filefix create-structure <template_path> <target_dir> (!note always use a (YAML File Tree with Inline Content))
+filefix watch "<directory>" --interval 1  # Monitor and auto-organize new files
 
 ```
 ## Contributing : 

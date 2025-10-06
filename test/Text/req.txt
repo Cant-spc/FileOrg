@@ -1,0 +1,94 @@
+# File organization event handler
+class FileOrganizerHandler(FileSystemEventHandler):
+    """Handler for file system events that auto-organizes files."""
+    
+    def __init__(self, directory: str):
+        self.directory = directory
+        self.processing = set()  
+    
+    def on_created(self, event):
+        """Called when a file is created."""
+        if event.is_directory:
+            return
+        
+        file_path = event.src_path
+        filename = os.path.basename(file_path)
+        
+        if file_path in self.processing:
+            return
+        
+        parent_dir = os.path.basename(os.path.dirname(file_path))
+        if parent_dir in FILE_CATEGORIES.values():
+            return
+        
+        time.sleep(0.5)
+            
+        if not os.path.exists(file_path):
+            return
+        
+        try:
+            self.processing.add(file_path)
+            
+            _, ext = os.path.splitext(filename)
+            ext = ext.lower()
+            
+            target_folder = FILE_CATEGORIES.get(ext, "Others")
+            target_path = os.path.join(self.directory, target_folder)
+            
+            os.makedirs(target_path, exist_ok=True)
+            
+            new_path = os.path.join(target_path, filename)
+            
+            counter = 1
+            base_name, extension = os.path.splitext(filename)
+            while os.path.exists(new_path):
+                new_filename = f"{base_name}_{counter}{extension}"
+                new_path = os.path.join(target_path, new_filename)
+                counter += 1
+            
+            os.rename(file_path, new_path)
+            typer.echo(f"📁 Organized: '{filename}' → '{target_folder}'")
+            
+        except (OSError, PermissionError) as e:
+            typer.echo(f"⚠️  Error organizing '{filename}': {e}")
+        finally:
+            self.processing.discard(file_path)
+
+
+@app.command()
+def watch(
+    directory: str = typer.Argument(".", help="Directory to watch and auto-organize"),
+    interval: int = typer.Option(1, "--interval", "-i", help="Check interval in seconds")
+):
+    """
+    Watch a directory and automatically organize new files in real-time.
+    
+    This command monitors the specified directory for new files and automatically
+    organizes them into category folders based on their file extensions.
+    
+    Press Ctrl+C to stop watching.
+    """
+    if not os.path.isdir(directory):
+        typer.echo(f"Error: '{directory}' is not a valid directory.")
+        raise typer.Exit(code=1)
+    
+    directory = os.path.abspath(directory)
+    
+    typer.echo(f"👀 Watching directory: {directory}")
+    typer.echo(f"🔄 Auto-organizing new files...")
+    typer.echo(f"Press Ctrl+C to stop\n")
+    
+    event_handler = FileOrganizerHandler(directory)
+    observer = Observer()
+    observer.schedule(event_handler, directory, recursive=False)
+    observer.start()
+    
+    try:
+        while True:
+            time.sleep(interval)
+    except KeyboardInterrupt:
+        typer.echo("\n🛑 Stopping file watcher...")
+        observer.stop()
+    
+    observer.join()
+    typer.echo("✅ File watcher stopped.")

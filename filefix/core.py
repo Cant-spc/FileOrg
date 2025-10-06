@@ -4,6 +4,9 @@ import yaml
 from typing import Dict, Union
 from pathlib import Path
 from datetime import datetime
+import time
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 
 app = typer.Typer(help="A CLI tool to organize files in a directory.")
 
@@ -304,7 +307,6 @@ def process_structure(structure: Union[Dict, str], base_path: Path, force: bool)
                 typer.echo(f"Error creating file {item_path}: {e}")
     
     return counts
-
 
 
 
